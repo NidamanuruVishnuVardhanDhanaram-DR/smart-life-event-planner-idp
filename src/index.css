@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ------------------ BASE LAYER ------------------ */
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-gray-900;
+    background-image: url('https://img.freepik.com/free-vector/golden-dust-elements-falling-down_260559-287.jpg?semt=ais_hybrid&w=740&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Floating gradient light overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.15) 0%, transparent 60%),
+      radial-gradient(circle at 80% 20%, rgba(255, 165, 0, 0.15) 0%, transparent 60%),
+      radial-gradient(circle at 40% 50%, rgba(255, 193, 7, 0.15) 0%, transparent 60%);
+    animation: float 25s ease-in-out infinite;
+    z-index: -2;
+  }
+
+  /* Glass blur overlay */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(6px);
+    z-index: -1;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #FFD700, #FFA500);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #FFC700, #FF9500);
+  }
+}
+
+/* ------------------ COMPONENTS LAYER ------------------ */
+@layer components {
+  /* Primary button */
+  .btn-primary {
+    @apply bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold py-3 px-6 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-amber-300;
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  /* Outline button */
+  .btn-outline {
+    @apply border-2 border-white/40 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white font-semibold py-3 px-6 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white/30;
+  }
+
+  /* Card / container */
+  .card {
+    @apply bg-white/80 backdrop-blur-xl rounded-2xl shadow-2xl p-8 border border-white/40 hover:scale-105 transition-all duration-500;
+  }
+
+  /* Input fields — FIXED visibility */
+  .input-field {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-xl 
+    bg-white/90 text-gray-800 placeholder-gray-500 
+    focus:outline-none focus:ring-2 focus:ring-amber-400 
+    focus:border-amber-500 transition-all duration-300;
+  }
+
+  /* Form labels */
+  .form-label {
+    @apply block text-sm font-semibold text-gray-700 mb-2 tracking-wide;
+  }
+
+  /* Error messages */
+  .form-error {
+    @apply text-sm text-red-500 mt-2 font-medium;
+  }
+
+  /* Centered container */
+  .page-container {
+    @apply min-h-screen flex items-center justify-center;
+  }
+
+  /* Glass effect card */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Text gradient (for headings) */
+  .text-gradient {
+    background: linear-gradient(45deg, #FFD700, #FFA500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+/* ------------------ UTILITIES LAYER ------------------ */
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ------------------ ANIMATIONS ------------------ */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(1deg); }
+  66% { transform: translateY(5px) rotate(-1deg); }
+}
