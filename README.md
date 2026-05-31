@@ -1,0 +1,1 @@
+# smart-life-event-planner-idp
